@@ -10,7 +10,7 @@ p = remote("csc748.hostbin.org", 7011)
 p.recvuntil(b"\n\n")
 
 # get and print secret string 
-s = p.recev(15)
+s = p.recv(15)
 print(f"The secret string was: {s}")
 
 # send back secret string
