@@ -21,4 +21,4 @@ p.interactive()
 
 # add code to print flag.txt
 
-# Flag fetched is: 
+# Flag fetched is: flag{28ad309117e29e7f87a9e7ec231f8348}
