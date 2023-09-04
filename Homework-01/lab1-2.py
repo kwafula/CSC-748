@@ -21,6 +21,7 @@ p.interactive()
 
 # add code to print flag.txt
 
-## Flag to fetched is: flag{082f90215133f4755f27ec6850b1eecc}
+# function address to call is 0x40127b or 4199035 in decimal
+# Flag to fetched is: flag{082f90215133f4755f27ec6850b1eecc}
 
 
