@@ -18,3 +18,5 @@ p.sendline(s)
 
 # establish interactive session 
 p.interactive()
+
+# add code to print flag.txt
