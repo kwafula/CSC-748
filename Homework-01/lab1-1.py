@@ -20,3 +20,5 @@ p.sendline(s)
 p.interactive()
 
 # add code to print flag.txt
+
+# Flag fetched is: 
