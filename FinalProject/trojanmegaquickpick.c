@@ -125,7 +125,7 @@ int main() {
 				break;
 
 			case 5: // Play Picks
-				quick_draw = malloc(16);
+				quick_draw = malloc(24);
 				quick_draw = balls_gen();
 				break;
 			
