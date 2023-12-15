@@ -29,7 +29,7 @@ void init() {
 
 }
 
-// Get the number of pick per draw
+// Get the number of picks per draw
 int num_picks() {
 
 	int i;
@@ -40,85 +40,83 @@ int num_picks() {
 	return i;
 }
 
-// Generate 6 random white balls between 1 and 70
-int white_balls_gen() {
+// Generate 6 random balls between 1 and 50
+int balls_gen() {
   	time_t t;
-	int white_balls
+	int balls
   	srand((unsigned)time(&t));
   	for(int i =0; i<5;i++) {
-    		white_balls = rand()% 70 + 1;
-    		printf("%i", white_balls);
-    	return white_balls;
-}
-
-// Generate 1 random mega ball between 1 and 25
-int mega_ball_gen() {
-  	int mega_ball = rand()% 25 + 1;
-  	printf("%i", mega_ball);
-  	return mega_ball;
+    		balls = rand()% 50 + 1;
+    		printf("%i", balls);
+    	return balls;
 }
 
 int main() {
+	// Iterators
+	int choice, i;
+	
 	// Quik picks
-  	int quick_pick_1 [6] = {0};
-  	int quick_pick_2 [6] = {0};
-  	int quick_pick_3 [6] = {0};
-  	int quick_pick_4 [6] = {0};
-  	int quick_pick_5 [6] = {0};
-  	int quick_pick_6 [6] = {0};
-  	int quick_pick_7 [6] = {0};
-  	int quick_pick_8 [6] = {0};
-  	int quick_pick_9 [6] = {0};
-  	int quick_pick_10 [6] = {0};
+  	int quick_picks[10];
 
 	// Quick draw
-  	int quick_draw_ [6] = {0};
+  	int quick_draw;
   
 	init();
 
 	// CODE GOES HERE
 	while (1) {
 
-		printf("What would you like to do?: ");
-		printf("(1) New, (2) View, (3) Delete, (4) Edit, (5) Load flag into memory\n");
+		printf("Welcome To Trojans Mega Quick Picks! Are your lucky?.. Let's Play!!!");
+		printf("Select the menu option?: ");
+		printf("(1) Quick Picks, (2) View Pick, (3) Delete Pick, (4) Edit Pick, (3) Play Picks, (6) Cancel Play, (7) Confirm Play\n");
 		printf("Choice: ");
 		choice = get_int();
 
 		switch(choice) {
 
-			case 1:	// New
-				for (i=0; i<32 && notes[i]; i++);
-				if (i < 32) {
-					notes[i] = malloc(64);
-					printf("Contents: ");
-					scanf("%63s", notes[i]);		// safe! no overflow here
-					printf("Note saved! (ID#%d)\n", i);
+			case 1:	// Quick Picks
+				printf("How many picks do you want to make?: ");
+				i = get_int();
+				for (i=0; i<10 && quick_picks[i]; i++);
+				if (i < 10) {
+					quick_picks[i] = malloc(16);
+					quick_picks[i] = balls_gen();
+					printf("Quick pick ID-#%d is: #%d", i, quick_picks[i]);
 				} else {
-					printf("sorry, too many notes\n");
+					printf("You must specify the number of picks to play\n");
 				}
 				break;
 
-			case 2: // View
-				printf("Note ID?: ");
-				choice = get_int();
-				if (choice >= 0 && choice < 32) {
-					printf("Contents: ");
-					write(1, notes[choice], 64);
-				} else
-					printf("Invalid note ID\n");
+			case 2: // View Pick
+				printf("Enter quick pick ID: ");
+				i = get_int();
+				if (i < (sizeof(quick_picks)/size(quick_picks[0]))) {
+					printf("Quick pick ID-#%d is: #%d", i, quick_picks[i]);
+				} else {
+					printf("Invalid quick pick number\n");
+				}
 				break;
 
-			case 3: // Delete
-				printf("Note ID?: ");
-				choice = get_int();
-				if (choice >= 0 && choice < 32)
-					free(notes[choice]);
-				else
-					printf("Invalid note ID\n");
+			case 3: // Delete Pick
+				printf("Enter quick pick ID: ");
+				i = get_int();
+				if (i < (sizeof(quick_picks)/size(quick_picks[0]))) {
+					printf("Quick pick ID-#%d is: #%d", i, quick_picks[i]);
+					quick_picks[i] = balls_gen();
+					printf("Quick pick ID-#%d has changed to: #%d", i, quick_picks[i]);
+				} else {
+					printf("Invalid quick pick ID\n");
+				}
 				break;
 
-			case 4: // Edit
-				printf("Hacker tool, not allowed! >:(\n");
+			case 4: // Edit Pick
+				printf("Enter quick pick ID: ");
+				i = get_int();
+				if (i < (sizeof(quick_picks)/size(quick_picks[0]))) {
+					free(quick_picks[i]);
+				} else {
+					printf("Invalid quick pick ID\n");
+				}
 				break;
 
 			case 5: // Load flag into memory
